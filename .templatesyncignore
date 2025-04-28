@@ -1,0 +1,4 @@
+examples/
+*.tf
+*.md
+!CONTRIBUTING.md

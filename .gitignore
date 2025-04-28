@@ -1,0 +1,59 @@
+# Terraform
+.terraform/
+.terraform.lock.hcl
+
+crash.log
+crash.*.log
+
+**/.terraform/
+**/.terraform.lock.hcl
+
+.terraform.tfstate.lock.info
+
+*.tfplan
+*.tfplan.*
+*.tfstate
+*.tfstate.*
+
+terraform.tfplan
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+*.auto.tfvars
+*.auto.tfvars.json
+
+.terraformrc
+terraform.rc
+
+# Azure
+.azure/
+azure-context.sh
+
+# VSCode / JetBrains
+.vscode/
+.idea/
+
+# SonarQube
+.scannerwork/
+
+# OS junk
+.DS_Store
+.Trashes
+
+# Python
+__pycache__/
+*.pyc
+
+# Editor swap/junk files
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+
+# Misc shell temp files
+*.log
+*.bak
+*.tmp
+*.orig

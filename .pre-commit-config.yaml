@@ -1,0 +1,103 @@
+
+default_install_hook_types: [commit-msg, pre-commit]
+
+repos:
+  # ✅ General Git Hygiene Hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      # 🚫 Prevent bad patterns
+      - id: check-added-large-files
+        args: [--maxkb=15000]
+      - id: check-merge-conflict
+      - id: check-vcs-permalinks
+      - id: forbid-new-submodules
+      - id: no-commit-to-branch
+        args: [--branch=main]
+
+      # 📄 File formatting & consistency
+      - id: end-of-file-fixer
+        exclude: (^|/)README\.md$  # Avoid autofix loops with terraform-docs
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md]
+        exclude: ^CHANGELOG\.md$
+      - id: mixed-line-ending
+        args: [--fix=lf]
+      - id: check-executables-have-shebangs
+      - id: check-case-conflict
+      - id: check-symlinks
+
+      # Structured Files
+      - id: check-yaml
+      - id: check-json
+      - id: check-byte-order-marker
+      - id: check-toml
+
+      # 🔐 Security
+      - id: detect-aws-credentials
+        args: [--allow-missing-credentials]
+      - id: detect-private-key
+
+      # ✨ Optional: enforce alphabetical order in files
+      - id: file-contents-sorter
+        args: [--files-without-shebangs]
+
+  # ✅ Terraform / OpenTofu Hooks
+  - repo: https://github.com/tofuutils/pre-commit-opentofu
+    rev: v2.2.0
+    hooks:
+      - id: tfupdate
+        name: Autoupdate Terraform versions
+        args:
+          - --args=terraform
+          - --args=--recursive
+          - --args=--version "~> 1.9.0"
+
+      - id: tfupdate
+        name: Autoupdate provider azurerm versions
+        args:
+          - --args=provider azurerm
+          - --args=--recursive
+          - --args=--version ">= 4.0.0"
+
+      - id: tofu_fmt
+        args:
+          - --args=-recursive
+
+      - id: tofu_docs
+        args:
+          - --hook-config=--path-to-file=README.md
+          - --hook-config=--add-to-existing-file=true
+          - --hook-config=--create-file-if-not-exist=true
+          - --hook-config=--use-standard-markers=true
+        exclude: ^examples
+
+      - id: tofu_validate
+        exclude: ^examples
+        args:
+          - --tf-init-args=-upgrade
+          - --hook-config=--retry-once-with-cleanup=true
+
+      - id: tofu_tflint
+        exclude: ^examples
+        args:
+          - --args=--config=.tflint.hcl
+          - --env-vars=TFLINT_LOG="info"
+
+      - id: tofu_trivy
+        args:
+          - --args=--severity LOW,MEDIUM,HIGH,CRITICAL
+          - --args=--skip-dirs '**/.terraform'
+
+      - id: tofu_checkov
+        args:
+          - --args=--framework=terraform,terraform_plan,terraform_json
+          - --args=--check LOW,MEDIUM,HIGH,CRITICAL
+
+  # ✅ Conventional Commit Enforcement
+  - repo: https://github.com/alessandrojcm/commitlint-pre-commit-hook
+    rev: v9.22.0
+    hooks:
+      - id: commitlint
+        stages: [commit-msg]
+        additional_dependencies: ["@commitlint/config-conventional"]
