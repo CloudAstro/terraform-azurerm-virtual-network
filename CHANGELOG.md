@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.0](https://github.com/CloudAstro/terraform-azurerm-virtual-network/compare/v1.0.0...v1.1.0) (2025-05-07)
+
+
+### Features
+
+* add separated output for vnet subnets as map of objects ([9dbf525](https://github.com/CloudAstro/terraform-azurerm-virtual-network/commit/9dbf525c6c2683d014f9f22f091c7614e766b360))
+* add separated output for vnet subnets as map of objects ([23d7af8](https://github.com/CloudAstro/terraform-azurerm-virtual-network/commit/23d7af815bbfafc48b9139c16b81d84375234040))
+
 ## 1.0.0 (2025-04-28)
 
 
