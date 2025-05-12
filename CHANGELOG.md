@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.1](https://github.com/CloudAstro/terraform-azurerm-virtual-network/compare/v1.1.0...v1.1.1) (2025-05-12)
+
+
+### Bug Fixes
+
+* subnet output if subnet variable is null and use locals for the output ([b1c47d7](https://github.com/CloudAstro/terraform-azurerm-virtual-network/commit/b1c47d7aced4e0d08c830c65730ef8898c5096cf))
+* subnet output if subnet variable is null and use locals for the output ([f7fef81](https://github.com/CloudAstro/terraform-azurerm-virtual-network/commit/f7fef81d765b7a2617aeb1d389e298211dff4d92))
+
 ## [1.1.0](https://github.com/CloudAstro/terraform-azurerm-virtual-network/compare/v1.0.0...v1.1.0) (2025-05-07)
 
 
