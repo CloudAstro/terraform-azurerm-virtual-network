@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/CloudAstro/terraform-azurerm-virtual-network/compare/v1.1.2...v1.2.0) (2026-06-18)
+
+
+### Features
+
+* update tf and provider version ([148821c](https://github.com/CloudAstro/terraform-azurerm-virtual-network/commit/148821cf79c47f12f608240c403c7f693c5e0227))
+
 ## [1.1.2](https://github.com/CloudAstro/terraform-azurerm-virtual-network/compare/v1.1.1...v1.1.2) (2025-05-12)
 
 
